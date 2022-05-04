@@ -1,4 +1,5 @@
-const a = 1;
-const b = 2;
+function foo(e) {
+  console.log(e);
+}
 
-const c = a + b;
+foo(4);
