@@ -1,0 +1,33 @@
+.contacts {
+    &__title {
+        @include h-3;
+        color: $color-light-xl;        
+
+        @include media-mobile {
+            @include h-3-mobile;
+        }
+    }
+    &__content {
+        text-decoration: none;
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+
+        p {
+            @include h-4;
+            color: $color-primary; 
+            margin-left: 20px;                      
+        }
+
+        @include media-mobile {
+            margin-top: 40px;
+            justify-content: center;
+        }
+    }
+    &__email-icon {        
+        flex: 0 0 auto;
+    }    
+    &__phone-icon {        
+        flex: 0 0 auto;
+    }
+}

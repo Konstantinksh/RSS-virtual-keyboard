@@ -1,0 +1,55 @@
+.footer {
+    @include gradient-bgnd;
+    &__content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-top: 40px;
+        
+        @include media-tablet {
+            padding-top: 30px;
+            width: 708px;       
+        }
+        
+        @include media-mobile {
+            width: 300px;        
+        }
+    }
+    &__contacts {
+        margin: 16px 159px 0px 0;
+        flex: 0 1 279px;
+
+        @include media-tablet {
+            margin: 0 60px 65px 0; 
+            flex: 0 1 279px;          
+        }                
+
+        @include media-mobile {
+            margin: 0 0 40px 0;
+            text-align: center;
+        }
+    }
+    &__address {
+        margin: 16px 160px 0px 0;
+        flex: 0 0 302px;
+
+        @include media-tablet {
+            margin: 0 0 65px 0;  
+            flex: 0 1 302px;         
+        }        
+
+        @include media-mobile {
+            margin: 0 0 40px 0;            
+            text-align: center;
+            flex: 0 0 300px;
+        }
+
+    }    
+    &__img {
+        flex: 0 1 auto; 
+
+        @include media-mobile {
+            padding: 0 20px 0;
+        }
+    }
+}

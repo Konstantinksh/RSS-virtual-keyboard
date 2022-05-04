@@ -1,0 +1,54 @@
+.card {
+    &__content {
+        display: flex;        
+        flex: 0 0 auto;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 9px;
+        background-color: $color-light-s;
+        @include transition-standart;
+
+        &:hover {
+            cursor: pointer;
+            background-color: $color-light-xl;
+            @include card-hover;
+
+            transition: all 0.5s ease 0s;
+
+            a {
+                border: 2px solid $color-primary-light;
+                background-color: $color-primary-light;
+            }
+        }
+    }
+
+    &__btn {
+        margin-bottom: 30px;
+    }
+
+    &__img {
+        margin-bottom: 30px;
+    }
+
+    &__title {
+        margin-bottom: 30px;
+        color: $color-dark-l;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 23px;
+        letter-spacing: 0.06em;
+    }
+
+    &__disable_tablet {
+        @include media-tablet {
+            display: none;
+        }
+    }
+
+    &__disable_mobile {
+        @include media-mobile {
+            display: none;
+        }
+    }
+}

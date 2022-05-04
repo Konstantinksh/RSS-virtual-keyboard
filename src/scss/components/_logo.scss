@@ -1,0 +1,33 @@
+.logo-light {
+    &__title {  
+        color: $color-primary;
+        @include logo-title;
+        text-align: center;      
+    }
+    &__subtitle {
+        color: $color-light-xl;
+        @include logo-subtitle;
+        text-align: center;
+        margin-top: 9.85px;
+    }
+    &__link {
+        text-decoration: none;
+    }
+}
+
+.logo-dark {
+    &__title {  
+        color: $color-dark-l;
+        @include logo-title;
+        text-align: center;      
+    }
+    &__subtitle {
+        color: $color-dark-3-xl;
+        @include logo-subtitle;
+        text-align: center;
+        margin-top: 9.85px;
+    }
+    &__link {
+        text-decoration: none;
+    }
+}

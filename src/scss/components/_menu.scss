@@ -1,0 +1,140 @@
+%menu-link-fontstyle {
+    @include paragraph-l;
+
+    @include media-mobile {
+        @include paragraph-mobile-menu; 
+    }
+}
+
+%menu-underline {    
+    content: "";
+    background-color: $color-primary;
+    height: 3px;
+    width: 100%;
+    display: flex;
+}
+
+%menu-space-between {
+    li:not(:last-child) {
+        margin-right: 36px;
+
+        @include media-mobile {
+            margin: 20px 0px;
+        }
+    }    
+}
+
+.menu {
+
+    &__back{        
+        @include media-mobile {
+        
+        &_light {
+            background: $color-light-xl;
+        }
+
+        &_dark {
+        background: $color-dark-3-xl;  
+        }
+        }
+    }
+
+    &__logo{
+        position: fixed;
+        top: 30px;
+        left: calc(100% + 10px);
+        z-index: 10;
+        @include transition-standart;
+        white-space: nowrap;
+        display: none;
+
+        &_open{
+            left: calc(100% - 310px);
+        }
+
+        @include media-mobile {
+            display: flex;
+        }
+    }
+    
+    &__list {
+        display: flex;
+        justify-content: flex-end;
+        @extend %menu-space-between;
+        
+        
+        @include media-mobile {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            height: 100%;
+            min-width: 320px;
+            min-height: 550px;
+            overflow: hidden;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            @include transition-standart;
+
+            &_open{
+                right: 0px;
+            }
+        }
+    }
+
+    &__link {
+        
+        &_light {
+            color: $color-dark-s;
+            @extend %menu-link-fontstyle;
+
+            @include transition-fast;
+
+            &:hover {
+                color: $color-light-s;
+            }
+        }
+
+        &_dark {
+            color: $color-dark-l;
+            @extend %menu-link-fontstyle;
+
+            @include transition-fast;
+
+            &:hover {
+                color: $color-dark-3-xl;
+            }
+        }
+
+        &_light-active {
+            color: $color-light-s;
+            @extend %menu-link-fontstyle;        
+        
+            &::after {
+                @extend %menu-underline;
+            }
+        }
+
+        &_dark-active {
+            color: $color-dark-3-xl;
+            @extend %menu-link-fontstyle;       
+        
+            &::after {
+                @extend %menu-underline;
+            }
+        }           
+    }
+
+    &__overlay {        
+        @include media-mobile {
+            @include overlay;
+            @include transition-standart;
+            left: 100%;
+
+            &_open {
+                left: 0;
+            }
+        }
+    }
+}
