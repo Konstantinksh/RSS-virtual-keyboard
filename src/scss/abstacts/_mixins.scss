@@ -1,0 +1,148 @@
+
+@mixin overlay{	
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 51;	
+	background: rgba(41, 41, 41, 0.6);
+}
+
+// Text styles
+@mixin h-2 {
+	font-size:44px;
+	font-family:"Georgia";
+	font-weight:normal;
+	font-style:normal;
+	line-height:130%;
+	text-decoration:none;
+}
+@mixin h-3 {
+	font-size:35px;
+	font-family:"Georgia";
+	font-weight:normal;
+	font-style:normal;
+	line-height: 45px;
+	letter-spacing:0.06em;
+	text-decoration:none;
+}
+@mixin h-3-mobile {
+	font-size:25px;
+	font-family:"Georgia";
+	font-weight:normal;
+	font-style:normal;
+	line-height:32px;
+	letter-spacing:0.06em;
+	text-decoration:none;
+}
+@mixin h-4 {
+	font-size:20px;
+	font-family:"Georgia";
+	font-weight:normal;
+	font-style:normal;
+	line-height:115%;
+	letter-spacing:0.06em;
+	text-decoration:none;
+}
+@mixin h-5 {
+	font-size:15px;
+	font-family:"Georgia";
+	font-weight:normal;
+	font-style:normal;
+	line-height:17px;
+	letter-spacing:0.06em;
+	text-decoration:none;
+}
+@mixin h-5-modal-window {
+	font-size:15px;
+	font-family:"Georgia";
+	font-weight: 700;
+	font-style:normal;
+	line-height:18px;
+	letter-spacing:0.15em;
+	text-decoration:none;
+}
+@mixin paragraph-l {
+	font-size:15px;
+	font-family:"Arial";
+	font-weight:normal;
+	font-style:normal;
+	line-height:160%;
+	text-decoration:none;
+}
+@mixin paragraph-s {
+	font-size:12px;
+	font-family:"Arial";
+	font-weight:normal;
+	font-style:italic;
+	line-height:150%;
+	text-decoration:none;
+}
+@mixin paragraph-mobile-menu {
+	font-size:32px;
+	font-family:"Arial";
+	font-weight:normal;
+	font-style:normal;
+	line-height:160%;
+	text-decoration:none;
+}
+@mixin logo-title {
+	font-size:32px;
+	font-family:"Georgia";
+	font-weight:normal;
+	font-style:normal;
+	line-height:35.2px;
+	letter-spacing:0.06em;
+	text-decoration:none;
+}
+@mixin logo-subtitle {
+	font-size:13px;
+	font-family:"Arial";
+	font-weight:normal;
+	font-style:normal;
+	line-height:14.95px;
+	letter-spacing:0.1em;
+	text-decoration:none;
+}
+@mixin card-hover {
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+}
+
+@mixin button {
+	font-size:17px;
+	font-family:"Georgia";
+	font-weight:normal;
+	font-style:normal;
+	line-height:130%;
+	letter-spacing:0.06em;
+	text-decoration:none;
+}
+
+// MEDIA QUERY MIXINS
+
+@mixin media-tablet {
+	@media (max-width: $br-l) { @content; }
+}
+
+@mixin media-mobile {
+	@media (max-width: $br-m) { @content; }
+}
+
+@mixin media-mobilesmall {
+	@media (max-width: $br-s) { @content; }
+}
+
+// TRANSITIONS
+
+@mixin transition-slow {
+	transition: all 1s ease 0s;
+}
+
+@mixin transition-standart {
+	transition: all 0.5s ease 0s;
+}
+
+@mixin transition-fast {
+	transition: all 0.2s ease 0s;
+}

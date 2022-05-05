@@ -1,41 +1,41 @@
 // import base
 @import "../scss/base/normalize",
-        "../scss/base/reset"
-        // "../scss/base/fonts"
+        "../scss/base/reset",
+        "../scss/base/fonts"
         ;
 
 // import abstracts
-// @import "../scss/abstacts/variables",
-//         "../scss/abstacts/functions",
-//         "../scss/abstacts/mixins",
-//         "../scss/abstacts/placeholders"
-//         ;
+@import "../scss/abstacts/variables",
+        "../scss/abstacts/functions",
+        "../scss/abstacts/mixins",
+        "../scss/abstacts/placeholders"
+        ;
 
 // import layouts
 @import "../scss/layout/wrapper"
         ;
 
 // import components
-// @import "../scss/components/buttons",
-//         "../scss/components/header",
-//         "../scss/components/logo",
-//         "../scss/components/menu",
-//         "../scss/components/not-only",
-//         "../scss/components/about",
-//         "../scss/components/pets",
-//         "../scss/components/slider",
-//         "../scss/components/card",
-//         "../scss/components/help",
-//         "../scss/components/icons",
-//         "../scss/components/donation",
-//         "../scss/components/footer",
-//         "../scss/components/contacts",
-//         "../scss/components/adress",
-//         "../scss/components/pagination",
-//         "../scss/components/burger",
-//         "../scss/components/body",
-//         "../scss/components/modal"
-//         ;
+@import "../scss/components/buttons",
+        "../scss/components/header",
+        "../scss/components/logo",
+        "../scss/components/menu",
+        "../scss/components/not-only",
+        "../scss/components/about",
+        "../scss/components/pets",
+        "../scss/components/slider",
+        "../scss/components/card",
+        "../scss/components/help",
+        "../scss/components/icons",
+        "../scss/components/donation",
+        "../scss/components/footer",
+        "../scss/components/contacts",
+        "../scss/components/adress",
+        "../scss/components/pagination",
+        "../scss/components/burger",
+        "../scss/components/body",
+        "../scss/components/modal"
+        ;
 // import themes
 @import "../scss/themes/scroll-style"
         ;
