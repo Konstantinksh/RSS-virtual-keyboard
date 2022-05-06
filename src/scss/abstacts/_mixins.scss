@@ -10,114 +10,30 @@
 }
 
 // Text styles
-@mixin h-2 {
-	font-size:44px;
-	font-family:"Georgia";
-	font-weight:normal;
-	font-style:normal;
-	line-height:130%;
-	text-decoration:none;
-}
-@mixin h-3 {
-	font-size:35px;
-	font-family:"Georgia";
-	font-weight:normal;
-	font-style:normal;
-	line-height: 45px;
-	letter-spacing:0.06em;
-	text-decoration:none;
-}
-@mixin h-3-mobile {
-	font-size:25px;
-	font-family:"Georgia";
-	font-weight:normal;
-	font-style:normal;
-	line-height:32px;
-	letter-spacing:0.06em;
-	text-decoration:none;
-}
-@mixin h-4 {
-	font-size:20px;
-	font-family:"Georgia";
-	font-weight:normal;
-	font-style:normal;
-	line-height:115%;
-	letter-spacing:0.06em;
-	text-decoration:none;
-}
-@mixin h-5 {
-	font-size:15px;
-	font-family:"Georgia";
-	font-weight:normal;
-	font-style:normal;
-	line-height:17px;
-	letter-spacing:0.06em;
-	text-decoration:none;
-}
-@mixin h-5-modal-window {
-	font-size:15px;
-	font-family:"Georgia";
-	font-weight: 700;
-	font-style:normal;
-	line-height:18px;
-	letter-spacing:0.15em;
-	text-decoration:none;
-}
-@mixin paragraph-l {
-	font-size:15px;
-	font-family:"Arial";
-	font-weight:normal;
-	font-style:normal;
-	line-height:160%;
-	text-decoration:none;
-}
-@mixin paragraph-s {
-	font-size:12px;
-	font-family:"Arial";
-	font-weight:normal;
-	font-style:italic;
-	line-height:150%;
-	text-decoration:none;
-}
-@mixin paragraph-mobile-menu {
-	font-size:32px;
-	font-family:"Arial";
-	font-weight:normal;
-	font-style:normal;
-	line-height:160%;
-	text-decoration:none;
-}
-@mixin logo-title {
-	font-size:32px;
-	font-family:"Georgia";
-	font-weight:normal;
-	font-style:normal;
-	line-height:35.2px;
-	letter-spacing:0.06em;
-	text-decoration:none;
-}
-@mixin logo-subtitle {
-	font-size:13px;
-	font-family:"Arial";
-	font-weight:normal;
-	font-style:normal;
-	line-height:14.95px;
-	letter-spacing:0.1em;
-	text-decoration:none;
-}
-@mixin card-hover {
-    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
-}
-
-@mixin button {
-	font-size:17px;
-	font-family:"Georgia";
-	font-weight:normal;
-	font-style:normal;
-	line-height:130%;
-	letter-spacing:0.06em;
-	text-decoration:none;
-}
+@mixin material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 32px; 
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+  
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+  
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+  
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+  }
 
 // MEDIA QUERY MIXINS
 

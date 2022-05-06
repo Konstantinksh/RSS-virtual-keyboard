@@ -1,12 +1,12 @@
 // Device brakepoints
 $br-s: 319px;
 $br-m: 767px;
-$br-l:1279px;
+$br-l: 890px;
 
 // Wrapper width
 $Width-Wrapper-s: calc(100% - 20px);
-$Width-Wrapper-m: calc(100% - 60px);
-$Width-Wrapper-l: 1200px;
+$Width-Wrapper-m: calc(100% - 20px);
+$Width-Wrapper-l: 850px;
 
 /* Color styles */
 $color-light-xl: #ffffff;
@@ -22,3 +22,4 @@ $color-primary: #f1cdb3;
 $color-primary-light: #fddcc4;
 $start-screen-gradient-background: #211f20;
 $footer-gradient-background: #211f20;
+$color-active: #638fd1;
