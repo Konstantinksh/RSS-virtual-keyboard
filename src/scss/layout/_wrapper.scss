@@ -1,12 +1,4 @@
 ._wrapper {
-    max-width: $Width-Wrapper-l;
+    width: $Width-Wrapper-l;
     margin: 0 auto;
-
-    @include media-tablet {
-        max-width: $Width-Wrapper-m; 
-    }
-    
-    @include media-mobile {
-        max-width: $Width-Wrapper-s;        
-    }
 }
