@@ -27,7 +27,7 @@ export class CustomMouseEvent {
     } else if (this.eventInner === 'ENTER') {
       this.newEventValue = '\n';
     } else if (this.eventInner === 'TAB') {
-      this.newEventValue = '    ';
+      this.newEventValue = '  ';
     }
   }
 

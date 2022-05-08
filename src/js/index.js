@@ -53,8 +53,8 @@ const Keyboard = {
     this.elements.keysContainer.append(this._createKeys())
   },
 
-  input() {
-
+  input(value) {    
+    this.elements.inputArea.value += value;
   },
 
   _createKeys() {    
@@ -130,7 +130,7 @@ const Keyboard = {
       newMouseEvent.getNewEventType();
 
       if (event.type === 'mousedown') {
-        Keyboard.elements.inputArea.value += newMouseEvent.newEventValue;
+        Keyboard.input(newMouseEvent.newEventValue);
         Keyboard.elements.keysContainer.addEventListener('mouseout', Keyboard._trigerMouseEvent);
       } else if (event.type === 'mouseup' || event.type === 'mouseout') {
         Keyboard.elements.keysContainer.removeEventListener('mouseout', Keyboard._trigerMouseEvent);
@@ -142,7 +142,7 @@ const Keyboard = {
   },
 
   _trigerKeyboardEvent(event) {
-    // console.log("Event Triggered! Name:" + event.code)
+    // console.log("Event Triggered! Name:", event)
     Keyboard._makeButtonActive(event)
     switch (event.code) {
       case "ShiftLeft":
@@ -162,6 +162,24 @@ const Keyboard = {
         Keyboard._toggleControlState(event);
         Keyboard._toggleLangState();
         break;
+      case "Backspace":
+      case "Delete":
+      case "Enter":
+        break;
+      case "Tab":
+        Keyboard.input('  ')
+        break;
+      default:
+        event.preventDefault();
+        Keyboard._newKeyboardEvent(event);
+        break;
+    }
+  },
+
+  _newKeyboardEvent(event){
+    if (event.type === 'keydown') {
+      let newValue = document.querySelector(`button[data-code=${event.code}]`).innerHTML;
+      Keyboard.input(newValue)
     }
   },
 
