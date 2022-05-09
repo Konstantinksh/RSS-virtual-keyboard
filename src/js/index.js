@@ -154,7 +154,6 @@ const Keyboard = {
 
     focusBack() {
         Keyboard.elements.inputArea.focus();
-        this.setCursorPosition(0);
     },
 
     windowFocusoutAction() {
@@ -170,7 +169,7 @@ const Keyboard = {
             newEvent.getNewEventType();
             const ArrOfMod = ['ControlLeft', 'ControlRight', 'AltLeft', 'AltRight', 'ShiftLeft', 'ShiftRight'];
 
-            if ((event.type === 'mousedown') && (Keyboard.properties.ctrlState || Keyboard.properties.altState || Keyboard.properties.shiftState) && ArrOfMod.includes(newEvent.eventCode)) {
+            if ((event.type === 'mousedown') && Keyboard.elements.activeButtons.has(newEvent.eventCode)) {
                 Keyboard.elements.keysContainer.addEventListener('mouseout', Keyboard.trigerMouseEvent);
                 Keyboard.elements.keysContainer.addEventListener('mouseup', Keyboard.trigerMouseEvent);
             } else if (event.type === 'mousedown' && !ArrOfMod.includes(newEvent.eventCode)) {
@@ -286,9 +285,9 @@ const Keyboard = {
             + inputArea.value.slice(indexEnd);
             Keyboard.properties.cursorPosition = indexStart;
             if (indexStart === indexEnd) {
-                this.setCursorPosition(-1);
+                Keyboard.setCursorPosition(-1);
             } else {
-                this.setCursorPosition(0);
+                Keyboard.setCursorPosition(0);
             }
         }
     },
@@ -366,7 +365,7 @@ const Keyboard = {
             setTimeout(() => {
                 Keyboard.elements.activeButtons.delete('ShiftLeft');
                 Keyboard.elements.activeButtons.delete('ShiftRight');
-                Keyboard.properties.ShiftState = false;
+                Keyboard.properties.shiftState = false;
                 Keyboard.refresh();
             }, 100);
         } else if (event.type === 'keydown') {
