@@ -253,9 +253,29 @@ const Keyboard = {
   _deleteAction(event) {
     if (event.type === 'keydown') {
       this._getCursorPosition(0);
+      let indexOfRemove = 0;
+      if (Keyboard.elements.inputArea.selectionStart === Keyboard.elements.inputArea.selectionEnd) {
+        indexOfRemove = Keyboard.elements.inputArea.selectionEnd + 1;
+      } else {indexOfRemove = Keyboard.elements.inputArea.selectionEnd}
+
       Keyboard.elements.inputArea.value = 
-      Keyboard.elements.inputArea.value.slice(0, Keyboard.properties.cursorPosition) +
-      Keyboard.elements.inputArea.value.slice(Keyboard.properties.cursorPosition + 1);
+      Keyboard.elements.inputArea.value.slice(0, Keyboard.elements.inputArea.selectionStart) +
+      Keyboard.elements.inputArea.value.slice(indexOfRemove);
+      this._setCursorPosition(0);
+    }
+  },
+
+  _backspaceAction(event) {
+    if (event.type === 'keydown') {
+      this._getCursorPosition(0);
+      let indexOfRemove = 0;
+      if (Keyboard.elements.inputArea.selectionStart === Keyboard.elements.inputArea.selectionEnd) {
+        indexOfRemove = Keyboard.elements.inputArea.selectionStart - 1;
+      } else {indexOfRemove = Keyboard.elements.inputArea.selectionStart}
+      
+      Keyboard.elements.inputArea.value = 
+      Keyboard.elements.inputArea.value.slice(0, indexOfRemove) +
+      Keyboard.elements.inputArea.value.slice(Keyboard.elements.inputArea.selectionEnd);
       this._setCursorPosition(0);
     }
   },
@@ -305,16 +325,6 @@ const Keyboard = {
   _getCursorPosition(step) {
     Keyboard.properties.cursorPosition = Keyboard.elements.inputArea.selectionStart + step;
     console.log('get CP', Keyboard.properties.cursorPosition)
-  },
-
-  _backspaceAction(event) {
-    if (event.type === 'keydown') {
-      this._getCursorPosition(-1);
-      Keyboard.elements.inputArea.value = 
-      Keyboard.elements.inputArea.value.slice(0, Keyboard.properties.cursorPosition) +
-      Keyboard.elements.inputArea.value.slice(Keyboard.properties.cursorPosition + 1);
-      this._setCursorPosition(0);
-    }
   },
 
   _newKeyboardEvent(event){
