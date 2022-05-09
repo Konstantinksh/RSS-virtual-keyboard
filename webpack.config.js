@@ -18,7 +18,13 @@ module.exports = {
         new HTMLWebpackPlugin({
             template: './src/index.html',
         }),
-        new CleanWebpackPlugin(),
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: [
+                '**/*',
+                '!.git',
+                '!.md',
+            ],
+        }),
         new CopyWebpackPlugin({
             patterns: [
                 {

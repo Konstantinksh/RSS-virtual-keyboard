@@ -1,5 +1,4 @@
-#dist
-dist
+
 
 #package-lock.json
 package-lock.json
@@ -86,7 +85,6 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
 
 # Gatsby files
 .cache/
