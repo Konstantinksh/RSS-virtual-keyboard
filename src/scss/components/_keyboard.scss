@@ -1,0 +1,103 @@
+.keyboard {
+
+    &__conteiner {
+        position: fixed;
+        left: 0;
+        bottom: 5px;
+        width: 100%;
+        background-color: $color-light-l;
+        padding: 20px 0;
+        transition: all 0.4s;
+        user-select: none;
+        @include material-icons;
+        overflow: auto;
+
+        &_hidden {
+            bottom: -100%;
+        }
+    }
+
+    &__keys {
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+        border-radius: 4px;        
+    }
+}
+
+
+.key {
+    &__container {
+        text-align: center;
+        border-radius: 4px;
+        border: none;
+        height: 70px;
+        width: 70px;
+        min-width: 50px;
+        margin: 4px;
+        padding: 0;
+        vertical-align: top;
+        background-color: $color-dark-l;
+        color: $color-light-s;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        transition: all 0.8s;
+    }
+
+    &__caps::after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: $color-dark-l;
+        position: absolute;
+        top: 8px;
+        left: 12px;
+    }
+    
+    &__caps_active::after {
+        background-color: rgb(94, 223, 96);
+    }
+
+    &_blacked {
+        background-color: $color-dark-3-xl;
+        color: $color-dark-m;
+    }    
+
+    &_active {        
+        transition: all 0.8s;
+        background-color: $color-active;
+        top: 3px
+    }
+
+    &_size-m {
+        width: 85px;
+    }
+
+    &_size-xm {
+        width: 120px;
+    }
+
+    &_size-xxm {
+        width: 148px;
+    }
+
+    &_size-l {
+        width: 178px;
+    }    
+
+    &_size-xl {
+        width: 163px;
+    }
+
+    &_size-xxl {
+        width: 453px;
+    }
+}
+
+

@@ -1,0 +1,53 @@
+
+@mixin overlay{	
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 51;	
+	background: rgba(41, 41, 41, 0.6);
+}
+
+// Text styles
+@mixin material-icons {
+	font-family: 'Roboto';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 1rem; 
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+}
+
+// MEDIA QUERY MIXINS
+
+@mixin media-tablet {
+	@media (max-width: $br-l) { @content; }
+}
+
+@mixin media-mobile {
+	@media (max-width: $br-m) { @content; }
+}
+
+@mixin media-mobilesmall {
+	@media (max-width: $br-s) { @content; }
+}
+
+// TRANSITIONS
+
+@mixin transition-slow {
+	transition: all 1s ease 0s;
+}
+
+@mixin transition-standart {
+	transition: all 0.5s ease 0s;
+}
+
+@mixin transition-fast {
+	transition: all 0.2s ease 0s;
+}
