@@ -57,7 +57,6 @@ const Keyboard = {
     },
 
     init() {
-    // console.log('init')
         this.elements.main = document.createElement('div');
         this.elements.mainContainer = document.createElement('div');
         this.elements.keysContainer = document.createElement('div');
@@ -73,7 +72,6 @@ const Keyboard = {
     },
 
     refresh() {
-    // console.log('referesh'
         this.elements.keysContainer = document.querySelector('.keyboard__keys');
         this.elements.keysContainer.innerHTML = '';
         this.elements.keysContainer.append(this.createKeys());
@@ -93,7 +91,6 @@ const Keyboard = {
         const fragment = document.createDocumentFragment();
 
         function setKeyClasses(key, keyElement) {
-            // console.log(key, keyElement)
             if (Keyboard.elements.activeButtons.has(key)) {
                 keyElement.classList.add('key_active');
             }
@@ -154,7 +151,6 @@ const Keyboard = {
     },
 
     focusBack() {
-    // console.log('Focus Back')
         Keyboard.elements.inputArea.focus();
         this.setCursorPosition(0);
     },
@@ -178,14 +174,12 @@ const Keyboard = {
                 Keyboard.elements.keysContainer.removeEventListener('mouseup', Keyboard.trigerMouseEvent);
                 Keyboard.elements.keysContainer.removeEventListener('mouseout', Keyboard.trigerMouseEvent);
             }
-            // console.log(newEvent)
             const newBtnEvent = new KeyboardEvent(newEvent.type, { code: newEvent.newEventCode });
             document.body.dispatchEvent(newBtnEvent);
         }
     },
 
     trigerKeyboardEvent(event) {
-    // console.log("Event Triggered! Name:", event)
         Keyboard.makeButtonActive(event);
         switch (event.code) {
         case 'ShiftLeft':
@@ -291,7 +285,6 @@ const Keyboard = {
         if (event.type === 'keydown') {
             Keyboard.getCursorPosition(-1);
             Keyboard.setCursorPosition(0);
-            // console.log('cursorleft', event)
         }
     },
 
@@ -299,10 +292,8 @@ const Keyboard = {
         if (event.type === 'keydown') {
             Keyboard.getCursorPosition(0);
             const indexToMove = Keyboard.elements.inputArea.value.lastIndexOf('\n', Keyboard.properties.cursorPosition - 1);
-            // console.log(indexToMove)
             Keyboard.properties.cursorPosition = indexToMove;
             Keyboard.setCursorPosition(0);
-            // console.log('cursorleft', event)
         }
     },
 
@@ -312,7 +303,6 @@ const Keyboard = {
             const indexToMove = Keyboard.elements.inputArea.value.indexOf('\n', Keyboard.properties.cursorPosition + 1);
             Keyboard.properties.cursorPosition = indexToMove;
             Keyboard.setCursorPosition(0);
-            // console.log('cursorleft', event)
         }
     },
 
@@ -326,12 +316,10 @@ const Keyboard = {
     setCursorPosition(step) {
         Keyboard.elements.inputArea.selectionStart = Keyboard.properties.cursorPosition + step;
         Keyboard.elements.inputArea.selectionEnd = Keyboard.properties.cursorPosition + step;
-    // console.log('set CP', Keyboard.properties.cursorPosition)
     },
 
     getCursorPosition(step) {
         Keyboard.properties.cursorPosition = Keyboard.elements.inputArea.selectionStart + step;
-    // console.log('get CP', Keyboard.properties.cursorPosition)
     },
 
     newKeyboardEvent(event) {
@@ -359,7 +347,6 @@ const Keyboard = {
             }
         } else { return; }
         Keyboard.refresh();
-    // console.log(this.properties.capsState, event.code);
     },
 
     toggleShiftState(event) {
@@ -377,34 +364,27 @@ const Keyboard = {
             }
         }
         Keyboard.refresh();
-    // console.log(this.properties.shiftState);
     },
 
     toggleControlState(event) {
-    // console.log("Ctrl Toggled!")
         if (event.type === 'keydown') {
             this.properties.ctrlState = true;
         } else if (event.type === 'keyup') {
             this.properties.ctrlState = false;
         }
-    // console.log(this.properties.ctrlState);
     },
 
     toggleAltState(event) {
-    // console.log("Alt Toggled!")
         if (event.type === 'keydown') {
             this.properties.altState = true;
         } else if (event.type === 'keyup') {
             this.properties.altState = false;
         }
-    // console.log(this.properties.altState);
     },
 
     toggleLangState() {
-    // console.log(this.properties.altState, this.properties.ctrlState)
         if (this.properties.altState && this.properties.ctrlState) {
             this.properties.langState = this.properties.langState === 'Eng' ? 'Ru' : 'Eng';
-            // console.log("Lang Toggled!");
             Keyboard.refresh();
         }
         Keyboard.setCurrentLang();
@@ -414,11 +394,9 @@ const Keyboard = {
         if (event.type === 'keydown') {
             Keyboard.elements.activeButtons.add(event.code);
             Keyboard.refresh();
-            // console.log(Keyboard.elements.activeButtons);
         } else if (event.type === 'keyup') {
             Keyboard.elements.activeButtons.delete(event.code);
             Keyboard.refresh();
-            // console.log(Keyboard.elements.activeButtons)
         }
     },
 
