@@ -1,5 +1,3 @@
-console.log('start')
-
 import '../scss/style.scss';
 import { keysData } from './KeysData';
 import { KeyButton } from './KeyButton';
@@ -14,19 +12,30 @@ window.addEventListener("DOMContentLoaded", function() {
 const InputArea = {
   elements: {
     main: null,
-    textArea: null 
+    textArea: null,
+    title: null,
+    description: null
   },
 
   init() {
     this.elements.main = document.createElement('div');
     this.elements.textArea = document.createElement('textarea');
+    this.elements.title = document.createElement('div');
+    this.elements.description = document.createElement('p');
 
+    this.elements.description.classList.add('description');
+    this.elements.title.classList.add('title');
     this.elements.main.classList.add('textarea');
-    this.elements.textArea.setAttribute('name', 'aim-area');    
+    this.elements.textArea.setAttribute('name', 'aim-area');
     this.elements.textArea.setAttribute('autofocus', '');
+
+    this.elements.title.innerHTML = 'RSS Virtual Keyboard'
+    this.elements.description.innerHTML = 'Keyboard was made with OS Windows. Shortcut for change language: Ctrl+Alt. <br> Press "Fn" at virtual-keyboard to choose action for arrows (navigation of input symbols)'
 
     this.elements.main.append(this.elements.textArea);
     document.body.prepend(this.elements.main);
+    document.body.prepend(this.elements.title);    
+    document.body.append(this.elements.description);
   }
 }
 
@@ -151,7 +160,7 @@ const Keyboard = {
   },
   
   _focusBack() {
-    console.log('Focus Back')
+    // console.log('Focus Back')
     Keyboard.elements.inputArea.focus()
     this._setCursorPosition(0);
   },
@@ -292,7 +301,7 @@ const Keyboard = {
     if (event.type === 'keydown') {
       Keyboard._getCursorPosition(0);
       let indexToMove = Keyboard.elements.inputArea.value.lastIndexOf('\n', Keyboard.properties.cursorPosition-1);
-      console.log(indexToMove)
+      // console.log(indexToMove)
       Keyboard.properties.cursorPosition = indexToMove;
       Keyboard._setCursorPosition(0);
       // console.log('cursorleft', event)
@@ -319,12 +328,12 @@ const Keyboard = {
 
   _setCursorPosition(step) {
     Keyboard.elements.inputArea.selectionStart = Keyboard.elements.inputArea.selectionEnd = Keyboard.properties.cursorPosition + step;
-    console.log('set CP', Keyboard.properties.cursorPosition)
+    // console.log('set CP', Keyboard.properties.cursorPosition)
   },
 
   _getCursorPosition(step) {
     Keyboard.properties.cursorPosition = Keyboard.elements.inputArea.selectionStart + step;
-    console.log('get CP', Keyboard.properties.cursorPosition)
+    // console.log('get CP', Keyboard.properties.cursorPosition)
   },
 
   _newKeyboardEvent(event){
@@ -415,5 +424,3 @@ const Keyboard = {
     localStorage.RSS_KSH_lang = this.properties.langState;
   }
 }
-
-console.log('end')
