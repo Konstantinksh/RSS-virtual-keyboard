@@ -78,11 +78,13 @@ const Keyboard = {
     },
 
     input(value) {
+        const indexStart = Keyboard.elements.inputArea.selectionStart;
+        const indexEnd = Keyboard.elements.inputArea.selectionEnd;
         this.getCursorPosition(value.length);
         this.elements.inputArea.value = (
-            this.elements.inputArea.value.slice(0, Keyboard.properties.cursorPosition - 1)
+            this.elements.inputArea.value.slice(0, indexStart)
       + value
-      + this.elements.inputArea.value.slice(Keyboard.properties.cursorPosition - 1)
+      + this.elements.inputArea.value.slice(indexEnd)
         );
         this.setCursorPosition(0);
     },
@@ -166,8 +168,12 @@ const Keyboard = {
         if (newEvent.isTargetButton()) {
             newEvent.getInnerType(keysData);
             newEvent.getNewEventType();
+            const ArrOfMod = ['ControlLeft', 'ControlRight', 'AltLeft', 'AltRight', 'ShiftLeft', 'ShiftRight'];
 
-            if (event.type === 'mousedown') {
+            if ((event.type === 'mousedown') && (Keyboard.properties.ctrlState || Keyboard.properties.altState || Keyboard.properties.shiftState) && ArrOfMod.includes(newEvent.eventCode)) {
+                Keyboard.elements.keysContainer.addEventListener('mouseout', Keyboard.trigerMouseEvent);
+                Keyboard.elements.keysContainer.addEventListener('mouseup', Keyboard.trigerMouseEvent);
+            } else if (event.type === 'mousedown' && !ArrOfMod.includes(newEvent.eventCode)) {
                 Keyboard.elements.keysContainer.addEventListener('mouseout', Keyboard.trigerMouseEvent);
                 Keyboard.elements.keysContainer.addEventListener('mouseup', Keyboard.trigerMouseEvent);
             } else if (event.type === 'mouseup' || event.type === 'mouseout') {
@@ -266,18 +272,24 @@ const Keyboard = {
 
     backspaceAction(event) {
         if (event.type === 'keydown') {
-            this.getCursorPosition(-1);
             let indexOfRemove = 0;
             const indexStart = Keyboard.elements.inputArea.selectionStart;
             const indexEnd = Keyboard.elements.inputArea.selectionEnd;
             const { inputArea } = Keyboard.elements;
             if (indexStart === indexEnd) {
                 indexOfRemove = indexStart - 1;
-            } else { indexOfRemove = indexStart; }
+            } else {
+                indexOfRemove = indexStart;
+            }
 
             inputArea.value = inputArea.value.slice(0, indexOfRemove)
             + inputArea.value.slice(indexEnd);
-            this.setCursorPosition(0);
+            Keyboard.properties.cursorPosition = indexStart;
+            if (indexStart === indexEnd) {
+                this.setCursorPosition(-1);
+            } else {
+                this.setCursorPosition(0);
+            }
         }
     },
 
@@ -326,7 +338,7 @@ const Keyboard = {
         if (event.type === 'keydown') {
             let newValue = '';
             if (event.code === 'Tab') {
-                newValue = '    ';
+                newValue = '\t';
             } else if (event.code === 'Enter') {
                 newValue = '\n';
             } else if (event.code === 'Fn') {
@@ -350,24 +362,31 @@ const Keyboard = {
     },
 
     toggleShiftState(event) {
-        if (event.type === 'keydown') {
-            if (this.properties.shiftState === true) {
-                this.properties.shiftState = false;
-            } else {
-                this.properties.shiftState = true;
-            }
+        if (Keyboard.elements.activeButtons.has('ShiftLeft') && Keyboard.elements.activeButtons.has('ShiftRight')) {
+            setTimeout(() => {
+                Keyboard.elements.activeButtons.delete('ShiftLeft');
+                Keyboard.elements.activeButtons.delete('ShiftRight');
+                Keyboard.properties.ShiftState = false;
+                Keyboard.refresh();
+            }, 100);
+        } else if (event.type === 'keydown') {
+            this.properties.shiftState = true;
         } else if (event.type === 'keyup') {
-            if (this.properties.shiftState === true) {
-                this.properties.shiftState = false;
-            } else {
-                this.properties.shiftState = true;
-            }
+            this.properties.shiftState = false;
         }
+
         Keyboard.refresh();
     },
 
     toggleControlState(event) {
-        if (event.type === 'keydown') {
+        if (Keyboard.elements.activeButtons.has('ControlLeft') && Keyboard.elements.activeButtons.has('ControlRight')) {
+            setTimeout(() => {
+                Keyboard.elements.activeButtons.delete('ControlLeft');
+                Keyboard.elements.activeButtons.delete('ControlRight');
+                Keyboard.properties.ctrlState = false;
+                Keyboard.refresh();
+            }, 100);
+        } else if (event.type === 'keydown') {
             this.properties.ctrlState = true;
         } else if (event.type === 'keyup') {
             this.properties.ctrlState = false;
@@ -375,7 +394,14 @@ const Keyboard = {
     },
 
     toggleAltState(event) {
-        if (event.type === 'keydown') {
+        if (Keyboard.elements.activeButtons.has('AltLeft') && Keyboard.elements.activeButtons.has('AltRight')) {
+            setTimeout(() => {
+                Keyboard.elements.activeButtons.delete('AltLeft');
+                Keyboard.elements.activeButtons.delete('AltRight');
+                Keyboard.properties.altState = false;
+                Keyboard.refresh();
+            }, 100);
+        } else if (event.type === 'keydown') {
             this.properties.altState = true;
         } else if (event.type === 'keyup') {
             this.properties.altState = false;
@@ -386,6 +412,15 @@ const Keyboard = {
         if (this.properties.altState && this.properties.ctrlState) {
             this.properties.langState = this.properties.langState === 'Eng' ? 'Ru' : 'Eng';
             Keyboard.refresh();
+            setTimeout(() => {
+                Keyboard.elements.activeButtons.delete('ControlLeft');
+                Keyboard.elements.activeButtons.delete('ControlRight');
+                Keyboard.elements.activeButtons.delete('AltLeft');
+                Keyboard.elements.activeButtons.delete('AltRight');
+                Keyboard.properties.altState = false;
+                Keyboard.properties.ctrlState = false;
+                Keyboard.refresh();
+            }, 100);
         }
         Keyboard.setCurrentLang();
     },

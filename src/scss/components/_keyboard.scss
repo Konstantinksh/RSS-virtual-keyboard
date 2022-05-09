@@ -7,7 +7,7 @@
         width: 100%;
         background-color: $color-light-l;
         padding: 20px 0;
-        transition: bottom 0.4s;
+        transition: all 0.4s;
         user-select: none;
         @include material-icons;
         overflow: auto;
@@ -46,13 +46,7 @@
         align-items: center;
         justify-content: center;
         position: relative;
-        transition: all 0.2s;
-            
-
-        // &:active {
-        //     background-color: $color-active;
-        //     top: 1px
-        // }
+        transition: all 0.8s;
     }
 
     &__caps::after {
@@ -75,9 +69,10 @@
         color: $color-dark-m;
     }    
 
-    &_active {
+    &_active {        
+        transition: all 0.8s;
         background-color: $color-active;
-        top: 1px
+        top: 3px
     }
 
     &_size-m {

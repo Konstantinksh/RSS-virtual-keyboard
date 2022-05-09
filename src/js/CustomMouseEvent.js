@@ -7,6 +7,7 @@ export default class CustomMouseEvent {
         this.eventInner = event.target.innerHTML;
         this.eventInnerType = '';
         this.eventType = event.type;
+        this.eventCode = event.target.dataset.code;
     }
 
     isTargetButton() {
