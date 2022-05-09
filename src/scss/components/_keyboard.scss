@@ -56,6 +56,21 @@
         // }
     }
 
+    &__caps::after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: $color-dark-l;
+        position: absolute;
+        top: 8px;
+        left: 12px;
+    }
+    
+    &__caps_active::after {
+        background-color: rgb(94, 223, 96);
+    }
+
     &_blacked {
         background-color: $color-dark-3-xl;
         color: $color-dark-m;

@@ -2,7 +2,7 @@ export class CustomMouseEvent {
   constructor (event) {
   this.nodeName = event.target.nodeName;
   this.newEventCode = event.target.dataset.code;
-  this.newEventType = '';
+  this.type = '';
   this.newEventValue = '';
   this.eventInner = event.target.innerHTML
   this.eventInnerType = '';
@@ -33,9 +33,9 @@ export class CustomMouseEvent {
 
   getNewEventType() {
     if (this.eventType === 'mousedown') {
-      this.newEventType = 'keydown';
+      this.type = 'keydown';
     } else if (this.eventType === 'mouseup' || this.eventType === 'mouseout') {
-      this.newEventType = 'keyup';
+      this.type = 'keyup';
     }
   }
 }

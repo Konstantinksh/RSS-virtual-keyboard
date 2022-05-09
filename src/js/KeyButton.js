@@ -18,6 +18,13 @@ export class KeyButton {
     keyButton.setAttribute('data-code', this.code);
     keyButton.classList.add('key__container');
 
+    if (this.code === "CapsLock" && !this.capsState) {
+      keyButton.classList.add('key__caps')
+    } else if (this.code === "CapsLock" && this.capsState) {
+      keyButton.classList.add('key__caps', 'key__caps_active')
+    }
+
+
     if (this.capsState && !this.shiftState) {
       keyButton.innerHTML = this.key[this.langState].toUpperCase();
     } else if (this.capsState && this.shiftState) {
