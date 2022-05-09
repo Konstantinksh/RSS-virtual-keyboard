@@ -267,7 +267,7 @@ const Keyboard = {
 
   _backspaceAction(event) {
     if (event.type === 'keydown') {
-      this._getCursorPosition(0);
+      this._getCursorPosition(-1);
       let indexOfRemove = 0;
       if (Keyboard.elements.inputArea.selectionStart === Keyboard.elements.inputArea.selectionEnd) {
         indexOfRemove = Keyboard.elements.inputArea.selectionStart - 1;
