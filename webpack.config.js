@@ -43,7 +43,4 @@ module.exports = {
             },
         ],
     },
-    clean: {
-        keep: /\.git/,
-    },
 };
