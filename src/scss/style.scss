@@ -1,0 +1,24 @@
+// import base
+@import "../scss/base/normalize",
+        "../scss/base/reset",
+        "../scss/base/fonts"
+        ;
+
+// import abstracts
+@import "../scss/abstacts/variables",
+        "../scss/abstacts/functions",
+        "../scss/abstacts/mixins",
+        "../scss/abstacts/placeholders"
+        ;
+
+// import layouts
+@import "../scss/layout/wrapper"
+        ;
+
+// import components
+@import "../scss/components/keyboard",
+        "../scss/components/textarea"
+        ;
+// import themes
+@import "../scss/themes/scroll-style"
+        ;
